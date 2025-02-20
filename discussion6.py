@@ -3,6 +3,17 @@ import os
 
 
 def load_csv(f):
+
+    base_path = os.path.abspath(os.path.dirname(__file__))
+    full_path = os.path.join(base_path, f)
+    with open(full_path, 'r') as fh:
+        r = csv.reader(fh)
+        rows = []
+        print(f"Add the data from the csv")
+        for row in r:
+            print(f"Adding {row} to rows")
+            rows.append(row)
+        print(f"Final value of rows is {rows}")
     '''
     Params: 
         f, name or path or CSV file: string
@@ -20,6 +31,13 @@ def load_csv(f):
     # use this 'full_path' variable as the file that you open
 
 def get_annual_max(d):
+    for line in d[1:]:
+        year = line[1]
+        month = line[2]
+        max = line[3]
+        newtuple = (year, month, max)
+
+    return newtuple
     '''
     Params:
         d, dict created by load_csv above
